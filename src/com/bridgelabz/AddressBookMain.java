@@ -6,37 +6,31 @@ public class AddressBookMain {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book program.");
 
-        System.out.println("Enter the first name: ");
         Scanner sc1 = new Scanner(System.in);
+
+        System.out.println("Enter the first name: ");
         String first_name = sc1.next();
 
         System.out.println("Enter the last name: ");
-        Scanner sc2 = new Scanner(System.in);
-        String last_name = sc2.next();
+        String last_name = sc1.next();
 
         System.out.println("Enter the address: ");
-        Scanner sc3 = new Scanner(System.in);
-        String address = sc3.next();
+        String address = sc1.next();
 
         System.out.println("Enter the city name: ");
-        Scanner sc4 = new Scanner(System.in);
-        String city = sc4.next();
+        String city = sc1.next();
 
         System.out.println("Enter the state's name: ");
-        Scanner sc5 = new Scanner(System.in);
-        String state = sc5.next();
+        String state = sc1.next();
 
         System.out.println("Enter the zip: ");
-        Scanner sc6 = new Scanner(System.in);
-        String zip = sc6.next();
+        String zip = sc1.next();
 
         System.out.println("Enter the phone number: ");
-        Scanner sc7 = new Scanner(System.in);
-        String phone_num = sc7.next();
+        String phone_num = sc1.next();
 
         System.out.println("Enter the email ID: ");
-        Scanner sc8 = new Scanner(System.in);
-        String email = sc8.next();
+        String email = sc1.next();
 
         AddressBook addressBook = new AddressBook();
         addressBook.createContact(
@@ -44,6 +38,13 @@ public class AddressBookMain {
                         zip, phone_num, email));
 
         addressBook.displayContacts();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter name to edit");
+        String firstName= scanner.next();
+
+        addressBook.editContact(firstName);
     }
 
 }
