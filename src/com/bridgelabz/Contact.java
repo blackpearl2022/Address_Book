@@ -2,6 +2,13 @@ package com.bridgelabz;
 
 public class Contact {
     private String firstName;
+    private String lastName;
+    private String address;
+    private String city;
+    private String state;
+    private String zip;
+    private String phoneNumber;
+    private String email;
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -34,14 +41,6 @@ public class Contact {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private String zip;
-    private String phoneNumber;
-    private String email;
 
     public Contact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String email) {
 
