@@ -41,10 +41,19 @@ public class AddressBookMain {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter name to edit");
-        String firstName= scanner.next();
+        System.out.println("Enter contact name to edit");
+        String firstName = scanner.next();
 
         addressBook.editContact(firstName);
+
+        Scanner scanner1 = new Scanner(System.in);
+
+        System.out.println("Enter contact name to delete");
+        firstName = scanner.next();
+
+        addressBook.deleteContact(firstName);
+
+        addressBook.displayContacts();
     }
 
 }
