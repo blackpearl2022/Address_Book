@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class AddressBook {
     private static final List<Contact> contacts = new ArrayList<>();
 
-    public void createContact(Contact contact) {
-        contacts.add(contact);
+    public void createContact(ArrayList<Contact> contact) {
+        contacts.addAll(contact);
     }
 
     public void displayContacts() {
@@ -77,6 +77,8 @@ public class AddressBook {
                 contacts.remove(i);
 
                 System.out.println("Contact with name " + firstName + " is deleted");
+            } else {
+                System.out.println("Contact to delete not found ");
             }
         }
     }
