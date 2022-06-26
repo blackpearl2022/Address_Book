@@ -7,31 +7,30 @@ public class AddressBookMain {
         System.out.println("Welcome to Address Book program.");
 
         Scanner sc1 = new Scanner(System.in);
-        AddressBooks addressBooks = new AddressBooks();
+        AddressBook addressBook = new AddressBook();
         while (true) {
-            System.out.println("1. Add Address Book");
-            System.out.println("2. Display Address Books");
-            System.out.println("3. Manage Contacts");
-            int choice = sc1.nextInt();
-
-            switch (choice) {
-                case 1:
-                    System.out.println("Enter the name of ADDRESS BOOK to add : ");
-                    String addressBookName = sc1.next();
-                    addressBooks.createAddressBook(addressBookName);
+            addressBook.takingChoice();
+            switch (addressBook.operationChoice) {
+                case AddressBook.ADD_CONTACTS:
+                    addressBook.addContacts(addressBook);
                     break;
-                case 2:
-                    addressBooks.displayAddressBooks();
+                case AddressBook.PRINT_CONTACTS:
+                    addressBook.displayContacts();
                     break;
-                case 3:
-                    System.out.println("Enter address book name to add contacts : ");
-                    String bookName = sc1.next();
-                    boolean addressBookExists = addressBooks.isAddressBookExists(bookName);
-                    if (addressBookExists) {
-                        addressBooks.manageContactsIn(bookName);
-                    }
+                case AddressBook.EDIT_CONTACT:
+                    addressBook.editContact();
+                    break;
+                case AddressBook.DELETE_CONTACT:
+                    addressBook.deleteContact();
+                    break;
+                case AddressBook.EXIT:
+                    System.out.println("Program ENDs");
+                    return;
+                default:
+                    System.out.println("Please Enter correct input !");
                     break;
             }
         }
     }
 }
+
