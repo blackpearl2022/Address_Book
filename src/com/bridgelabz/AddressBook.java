@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class AddressBook {
@@ -46,7 +47,7 @@ public class AddressBook {
             System.out.println("Enter the first name: ");
             String first_name = scanner.next();
             if (!contacts.isEmpty()) {
-                var isContact = contacts.stream().anyMatch(contact ->
+                boolean isContact = contacts.stream().anyMatch(contact ->
                         contact.getFirstName().equals(first_name));
                 if (isContact) {
                     System.out.println("Contacts with same name is not acceptable. Please enter new name ");
@@ -85,7 +86,9 @@ public class AddressBook {
             System.out.println("1. Address Book to add contacts");
             System.out.println("2. Display Address Books");
             System.out.println("3. Add Address Book");
-            System.out.println("4. Back to main menu");
+            System.out.println("4. Search by city.");
+            System.out.println("4. Search by state.");
+            System.out.println("5. Back to main menu");
             int choice = sc1.nextInt();
 
             switch (choice) {
@@ -107,6 +110,16 @@ public class AddressBook {
                     createEmptyAddressBook(bookName);
                     break;
                 case 4:
+                    System.out.println("Enter the name of city to search the Persons :");
+                    String city = sc1.next();
+                    searchByCity(contacts, city);
+                    break;
+                case 5:
+                    System.out.println("Enter the name of state to search the Persons :");
+                    String state = sc1.next();
+                    searchByState(contacts, state);
+                    break;
+                case 6:
                     isContinue = false;
                     break;
             }
@@ -127,6 +140,10 @@ public class AddressBook {
             System.out.println("Please add contact !!");
             return;
         }
+        printContacts(contactArrayList);
+    }
+
+    private void printContacts(ArrayList<Contact> contactArrayList) {
         contactArrayList.forEach(contact -> {
             System.out.println("first name=" + contact.getFirstName());
             System.out.println("Last name=" + contact.getLastName());
@@ -195,7 +212,6 @@ public class AddressBook {
                 System.out.println("Contact to edit not found");
             }
         });
-
     }
 
     public void deleteContact() {
@@ -247,5 +263,19 @@ public class AddressBook {
 
     private boolean isAddressBookExists(String bookName) {
         return multipleAddressBook.containsKey(bookName);
+    }
+
+    public void searchByCity(ArrayList<Contact> contacts, String city) {
+        ArrayList<Contact> contactList = (ArrayList<Contact>) contacts.stream()
+                .filter(contact -> contact.getCity().equals(city))
+                .collect(Collectors.toList());
+        printContacts(contactList);
+    }
+
+    private void searchByState(ArrayList<Contact> contacts, String state) {
+        ArrayList<Contact> contactList = (ArrayList<Contact>) contacts.stream()
+                .filter(contact -> contact.getState().equals(state))
+                .collect(Collectors.toList());
+        printContacts(contactList);
     }
 }
