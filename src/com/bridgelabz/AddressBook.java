@@ -278,6 +278,7 @@ public class AddressBook {
                 .filter(contact -> contact.getCity().equals(city))
                 .collect(Collectors.toList());
         printContacts(contactList);
+        System.out.println("The number of person present in city are" + contactList.size());
     }
 
     private void searchByState(ArrayList<Contact> contacts, String state) {
@@ -285,6 +286,7 @@ public class AddressBook {
                 .filter(contact -> contact.getState().equals(state))
                 .collect(Collectors.toList());
         printContacts(contactList);
+        System.out.println("The number of person present in state are" + contactList.size());
     }
 
     private Map<String, List<Contact>> viewPersonByCity(ArrayList<Contact> contacts) {
