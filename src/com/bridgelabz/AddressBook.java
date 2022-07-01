@@ -120,6 +120,14 @@ public class AddressBook {
                     searchByState(contacts, state);
                     break;
                 case 6:
+                    Map<String, List<Contact>> stringListMap1 = viewPersonByCity(contacts);
+                    System.out.println(stringListMap1);
+                    break;
+                case 7:
+                    Map<String, List<Contact>> stringListMap2 = viewPersonByState(contacts);
+                    System.out.println(stringListMap2);
+                    break;
+                case 8:
                     isContinue = false;
                     break;
             }
@@ -278,4 +286,15 @@ public class AddressBook {
                 .collect(Collectors.toList());
         printContacts(contactList);
     }
+
+    private Map<String, List<Contact>> viewPersonByCity(ArrayList<Contact> contacts) {
+        return contacts.stream()
+                .collect(Collectors.groupingBy(Contact::getCity));
+    }
+
+    private Map<String, List<Contact>> viewPersonByState(ArrayList<Contact> contacts) {
+        return contacts.stream()
+                .collect(Collectors.groupingBy(Contact::getCity));
+    }
+
 }
