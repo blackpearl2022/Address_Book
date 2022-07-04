@@ -128,6 +128,22 @@ public class AddressBook {
                     System.out.println(stringListMap2);
                     break;
                 case 8:
+                    System.out.println("Sort Contact by name");
+                    sortByName(contacts);
+                    break;
+                case 9:
+                    System.out.println("Sort Contact by city");
+                    sortByCity(contacts);
+                    break;
+                case 10:
+                    System.out.println("Sort Contact by state");
+                    sortByState(contacts);
+                    break;
+                case 11:
+                    System.out.println("Sort Contact by Zip");
+                    sortByZip(contacts);
+                    break;
+                case 12:
                     isContinue = false;
                     break;
             }
@@ -152,6 +168,7 @@ public class AddressBook {
     }
 
     private void printContacts(ArrayList<Contact> contactArrayList) {
+
         contactArrayList.forEach(contact -> {
             System.out.println("first name=" + contact.getFirstName());
             System.out.println("Last name=" + contact.getLastName());
@@ -297,6 +314,34 @@ public class AddressBook {
     private Map<String, List<Contact>> viewPersonByState(ArrayList<Contact> contacts) {
         return contacts.stream()
                 .collect(Collectors.groupingBy(Contact::getCity));
+
     }
 
+    private void sortByName(ArrayList<Contact> contacts) {
+        ArrayList<Contact> contactList = (ArrayList<Contact>) contacts.stream()
+                .sorted(Comparator.comparing(Contact::getFirstName))
+                .collect(Collectors.toList());
+        printContacts(contactList);
+    }
+
+    private void sortByZip(ArrayList<Contact> contacts) {
+        ArrayList<Contact> contactList = (ArrayList<Contact>) contacts.stream()
+                .sorted(Comparator.comparing(Contact::getZip))
+                .collect(Collectors.toList());
+        printContacts(contactList);
+    }
+
+    private void sortByState(ArrayList<Contact> contacts) {
+        ArrayList<Contact> contactList = (ArrayList<Contact>) contacts.stream()
+                .sorted(Comparator.comparing(Contact::getState))
+                .collect(Collectors.toList());
+        printContacts(contactList);
+    }
+
+    private void sortByCity(ArrayList<Contact> contacts) {
+        ArrayList<Contact> contactList = (ArrayList<Contact>) contacts.stream()
+                .sorted(Comparator.comparing(Contact::getCity))
+                .collect(Collectors.toList());
+        printContacts(contactList);
+    }
 }
