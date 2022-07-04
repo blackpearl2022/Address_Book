@@ -86,9 +86,14 @@ public class AddressBook {
             System.out.println("1. Address Book to add contacts");
             System.out.println("2. Display Address Books");
             System.out.println("3. Add Address Book");
-            System.out.println("4. Search by city.");
-            System.out.println("4. Search by state.");
-            System.out.println("5. Back to main menu");
+            System.out.println("4. Search Contacts in city.");
+            System.out.println("4. Search Contacts in state.");
+            System.out.println("5. View list of contacts in city.");
+            System.out.println("6. View list of contacts in state.");
+            System.out.println("7. Sort contacts list by name.");
+            System.out.println("8. Sort contacts list by city.");
+            System.out.println("9. Sort contacts list by state.");
+            System.out.println("10. Sort contacts list by Zip code.");
             int choice = sc1.nextInt();
 
             switch (choice) {
